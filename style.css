@@ -1,0 +1,33 @@
+body {
+  background-color: #101C2C;
+  font-family: sans-serif;
+  color: white;
+}
+
+form {
+  background-color: #121f30;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(181, 142, 90, 0.2);
+  max-width: 400px;
+  margin: 80px auto;
+}
+
+input, button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+button {
+  background-color: #B58E5A;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a17948;
+}
