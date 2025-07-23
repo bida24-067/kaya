@@ -1,36 +1,26 @@
-import { auth, db } from "./firebase-config.js";
-import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
-const signupForm = document.getElementById("signupForm");
-
-signupForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const firstName = document.getElementById("firstName").value.trim();
-  const lastName = document.getElementById("lastName").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
-
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-
-    await setDoc(doc(db, "users", user.uid), {
-      uid: user.uid,
-      firstName,
-      lastName,
-      phone,
-      email,
-      createdAt: new Date()
-    });
-
-    // Save user ID in localStorage and go to account page
-    localStorage.setItem("uid", user.uid);
-    window.location.href = "account.html";
-
-  } catch (error) {
-    alert(error.message);
-  }
+const auth0 = await createAuth0Client({
+ domain: "dev-iahzbt8xjj0gs5t0.us.auth0.com",
+ client_id: "g4ZZoMa6MMZAhS3it4OF2pmwSVyogImn",
+ cacheLocation: 'localstorage' // optional, keeps user logged in
 });
+// Check login status
+if (window.location.search.includes("code=")) {
+ await auth0.handleRedirectCallback();
+ window.history.replaceState({}, document.title, "/");
+}
+const user = await auth0.getUser();
+if (user) {
+ document.getElementById("profile").textContent = JSON.stringify(user, null, 2);
+}
+// Login
+document.getElementById("login").onclick = () => {
+ auth0.loginWithRedirect({
+   redirect_uri: window.location.origin
+ });
+};
+// Logout
+document.getElementById("logout").onclick = () => {
+ auth0.logout({
+   returnTo: window.location.origin
+ });
+};

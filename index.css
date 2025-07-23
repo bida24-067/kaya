@@ -1,0 +1,41 @@
+ body {
+      background-color: #101C2C;
+      color: #fff;
+    }
+    .main-section {
+      padding: 60px 20px;
+    }
+    .main-section img {
+      max-width: 100%;
+      height: auto;
+    }
+    .newsletter-heading {
+      color: #fff;
+    }
+    .read-more-btn {
+      background-color: #B58E5A;
+      border: none;
+      color: #fff;
+    }
+    .read-more-btn:hover {
+      background-color: #fff;
+      color: #B58E5A;
+    }
+    .form-control, .btn {
+      border-radius: 0;
+    }
+ 
+  body {
+    background-image: url('bg-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+   #KayaIN {
+    transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: scale(1);
+  }
+  #KayaIN.expanded {
+    transform: scale(1.25);
+  }
