@@ -1,0 +1,78 @@
+/* General Styles */
+body {
+  background-image: url('bg-2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+}
+
+main, footer {
+  background-color: #101C2C;
+  color: #fff;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Footer */
+footer {
+  background-color: #101C2C;
+  color: #fff;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Package Card */
+.package-card {
+  border: 2px solid #B58E5A;
+  border-radius: 16px;
+  background: rgba(16, 28, 44, 0.85);
+  padding: 32px 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.package-card h2 {
+  font-family: 'Raleway', Arial, sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+
+.package-card p,
+.package-card ul,
+.package-card li,
+#inquire {
+  font-family: 'Cormorant Garamond', serif;
+  color: #fff;
+}
+
+.package-card #price,
+#price {
+  color: #B58E5A;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Button Styles */
+#button2,
+.read-more-btn,
+#newsletterForm .btn {
+  background-color: #101C2C;
+  color: #fff;
+  border-radius: 30px !important;
+}
+
+#button2:hover,
+.read-more-btn:hover,
+#newsletterForm .btn:hover {
+  background-color: #B58E5A;
+  color: #fff;
+}
+
+/* Animations */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
