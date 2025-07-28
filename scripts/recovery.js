@@ -25,7 +25,7 @@
 
     try {
       await sendPasswordResetEmail(auth, email);
-      alert("✅ Reset email sent! Check your inbox.");
+      alert("✅ Reset email sent! Check your inbox & spam folder.");
     } catch (error) {
       alert("❌ Error: " + error.message);
     }
