@@ -77,46 +77,12 @@
   </div>
 </section>
 
-<script type="text/javascript" src="animation.js"></script>
+<script type="text/javascript" src="scripts/animation.js"></script>
  
-<script>
-// Newsletter script 
-const form = document.getElementById('newsletterForm');
-const message = document.getElementById('message');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const email = form.email.value.trim();
-
-  message.textContent = 'Subscribing...';
-
-  try {
-    const response = await fetch('http://34.61.149.248:3000/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok && data.success) {
-      message.textContent = '✅ Subscribed successfully!';
-      form.reset();
-    } else {
-      message.textContent = '❌ ' + (data.error?.message || 'Subscription failed');
-    }
-  } catch (err) {
-    message.textContent = '❌ Server not responding.';
-    console.error(err);
-  }
-});
-</script>
-<script type="module" src="newsletter.js"></script>
+<script type="module" src="scripts/newsletter.js"></script>
 <!-- Footer -->
 <footer class="text-center py-4">
-  <a href="index.html">
-    <img src="Kaya.png" alt="Kaya LOGO" width="100" height="100">
-  </a>
+  
   <p class="mt-2 mb-0">&copy; 2025 Kaya Botswana</p>
 </footer>
 

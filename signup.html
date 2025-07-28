@@ -29,31 +29,27 @@
 <header> 
      <!-- Nav Bar -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">  <div class="container">
-    <a class="navbar-brand" href="index.html">
-      <img src="Kaya.png" alt="Kaya" width="50" height="50">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="feedback.html">Feedback</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pricing.html">Pricing</a>
-        </li> 
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="Kaya.png" alt="Kaya" width="50" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="account.html">Your Account
+          </a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </header>
 
 <!-- Form -->
@@ -93,75 +89,13 @@
 
 <!-- Footer -->
 <footer>
-  <a href="index.html">
-    <img src="Kaya.png" alt="Kaya LOGO" width="100" height="100">
-  </a>
+  
   <p>&copy; 2025 Kaya Botswana</p>
 </footer>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script type="module">
-  // Import Firebase modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
-
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
-    authDomain: "kahiyaco.firebaseapp.com",
-    projectId: "kahiyaco",
-    storageBucket: "kahiyaco.firebasestorage.app",
-    messagingSenderId: "1034759752393",
-    appId: "1:1034759752393:web:659872d47eef97c251db18",
-    measurementId: "G-ZB13WQQKGF"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  // Select form and input elements
-  const form = document.querySelector("form");
-  const firstNameInput = document.querySelector('input[placeholder="First name"]');
-  const lastNameInput = document.querySelector('input[placeholder="Last name"]');
-  const emailInput = document.querySelector('input[type="email"]');
-  const passwordInput = document.querySelector('input[type="password"]');
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const firstName = firstNameInput.value.trim();
-    const lastName = lastNameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
-
-    try {
-      // Create user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      // Save additional user info to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        firstName,
-        lastName,
-        email,
-        createdAt: new Date()
-      });
-
-      // Redirect or show success
-      alert("Account created successfully!");
-      window.location.href = "account.html";  // or wherever you want
-
-    } catch (error) {
-      console.error("Signup error:", error.message);
-      alert("Failed to create account: " + error.message);
-    }
-  });
-</script>
+<script src="scripts/signup.js" type="module"></script>
 </body>
 </html>
