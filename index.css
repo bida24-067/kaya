@@ -39,3 +39,8 @@
   #KayaIN.expanded {
     transform: scale(1.25);
   }
+  /* Add or update this CSS for rounded buttons */
+.read-more-btn,
+#newsletterForm .btn {
+  border-radius: 15px !important;
+}
