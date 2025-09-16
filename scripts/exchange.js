@@ -2,9 +2,9 @@
 // This script handles currency conversion for pricing on the pricing page
 const exchangeRates = {
   BWP: 1,
-  USD: 0.075, // Example: 1 BWP = 0.073 USD
-  EUR: 0.064, // Example: 1 BWP = 0.067 EUR
-  ZAR: 1.312   // Example: 1 BWP = 1.32 ZAR
+  USD: 0.071, // Example: 1 BWP = 0.073 USD
+  EUR: 0.06, // Example: 1 BWP = 0.067 EUR
+  ZAR: 1.228   // Example: 1 BWP = 1.32 ZAR
 };
 
 const currencySymbols = {
