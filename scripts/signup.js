@@ -52,7 +52,7 @@
 
       // Redirect or show success
       alert("Account created successfully!");
-      window.location.href = "account.html";  // or wherever you want
+      window.location.href = "account.html";  // Direct where needed
 
     } catch (error) {
       console.error("Signup error:", error.message);
