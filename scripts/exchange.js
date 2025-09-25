@@ -4,7 +4,7 @@ const exchangeRates = {
   BWP: 1,
   USD: 0.075, // Example: 1 BWP = 0.073 USD
   EUR: 0.064, // Example: 1 BWP = 0.067 EUR
-  ZAR: 1.301,   // Example: 1 BWP = 1.32 ZAR
+  ZAR: 1.302,   // Example: 1 BWP = 1.32 ZAR
 };
 
 const currencySymbols = {
