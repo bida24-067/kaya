@@ -1,31 +1,31 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+import { auth } from "./firebase-config.js";
+import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
-    authDomain: "kahiyaco.firebaseapp.com",
-    projectId: "kahiyaco",
-    storageBucket: "kahiyaco.firebasestorage.app",
-    messagingSenderId: "1034759752393",
-    appId: "1:1034759752393:web:659872d47eef97c251db18",
-    measurementId: "G-ZB13WQQKGF"
-  };
+const loginForm = document.getElementById("loginForm");
+const loginBtn = loginForm.querySelector('button[type="submit"]');
+const loginMessage = document.getElementById("loginMessage");
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+loginForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  const loginForm = document.getElementById("loginForm");
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-  loginForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  // Visual feedback
+  const originalBtnText = loginBtn.textContent;
+  loginBtn.disabled = true;
+  loginBtn.textContent = "Logging in...";
+  loginMessage.textContent = "";
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "account.html";
-    } catch (error) {
-      alert("Login failed: " + error.message);
-    }
-  });
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    window.location.href = "account.html";
+  } catch (error) {
+    console.error("Login error:", error);
+    loginMessage.textContent = "❌ " + (error.code === 'auth/invalid-credential' ? 'Invalid email or password.' : error.message);
+    loginMessage.style.color = "#dc3545";
+  } finally {
+    loginBtn.disabled = false;
+    loginBtn.textContent = originalBtnText;
+  }
+});

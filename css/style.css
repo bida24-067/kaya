@@ -1,7 +1,13 @@
 body {
+  background-image: url('../images/bg-2.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-attachment: fixed !important;
   background-color: #101C2C;
-  font-family: sans-serif;
-  color: white;
+  color: #fff;
+  min-height: 100vh;
+  margin: 0;
 }
 
 form {
@@ -13,7 +19,8 @@ form {
   margin: 80px auto;
 }
 
-input, button {
+input,
+button {
   width: 100%;
   margin-top: 10px;
   padding: 12px;
@@ -30,4 +37,32 @@ button {
 
 button:hover {
   background-color: #a17948;
+}
+
+.text-orange {
+  color: #fd7e14 !important;
+}
+
+.bg-kaya {
+  background-color: #101C2C !important;
+}
+
+.btn-orange {
+  background-color: #B58E5A !important;
+  color: #fff !important;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-orange:hover {
+  background-color: #101C2C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+  width: 100%;
 }
