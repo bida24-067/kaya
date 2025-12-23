@@ -1,61 +1,69 @@
-// scripts/signup.js
-// This script handles user signup using Firebase Authentication and Firestore
-  // Import Firebase modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+import { auth, db } from "./firebase-config.js";
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyCB84FTOdVHbdMKSBLqKZ_YvZYl_QSVZek",
-    authDomain: "kahiyaco.firebaseapp.com",
-    projectId: "kahiyaco",
-    storageBucket: "kahiyaco.firebasestorage.app",
-    messagingSenderId: "1034759752393",
-    appId: "1:1034759752393:web:659872d47eef97c251db18",
-    measurementId: "G-ZB13WQQKGF"
-  };
+const form = document.getElementById("signupForm");
+const firstNameInput = document.getElementById("firstName");
+const lastNameInput = document.getElementById("lastName");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const signupBtn = form.querySelector('button[type="submit"]');
+const signupMessage = document.getElementById("signupMessage");
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  // Select form and input elements
-  const form = document.querySelector("form");
-  const firstNameInput = document.querySelector('input[placeholder="First name"]');
-  const lastNameInput = document.querySelector('input[placeholder="Last name"]');
-  const emailInput = document.querySelector('input[type="email"]');
-  const passwordInput = document.querySelector('input[type="password"]');
+  const firstName = firstNameInput.value.trim();
+  const lastName = lastNameInput.value.trim();
+  const email = emailInput.value.trim();
+  const password = passwordInput.value;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  signupMessage.textContent = "";
 
-    const firstName = firstNameInput.value.trim();
-    const lastName = lastNameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value;
+  // Basic Validation
+  if (!firstName || !lastName || !email || !password) {
+    signupMessage.textContent = "❌ Please fill in all fields.";
+    signupMessage.style.color = "#dc3545";
+    return;
+  }
 
-    try {
-      // Create user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+  if (password.length < 6) {
+    signupMessage.textContent = "❌ Password should be at least 6 characters.";
+    signupMessage.style.color = "#dc3545";
+    return;
+  }
 
-      // Save additional user info to Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        uid: user.uid,
-        firstName,
-        lastName,
-        email,
-        createdAt: new Date()
-      });
+  // Visual feedback
+  const originalBtnText = signupBtn.textContent;
+  signupBtn.disabled = true;
+  signupBtn.textContent = "Creating account...";
 
-      // Redirect or show success
-      alert("Account created successfully!");
-      window.location.href = "account.html";  // Direct where needed
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
 
-    } catch (error) {
-      console.error("Signup error:", error.message);
-      alert("Failed to create account: " + error.message);
-    }
-  });
+    await setDoc(doc(db, "users", user.uid), {
+      uid: user.uid,
+      firstName,
+      lastName,
+      email,
+      createdAt: new Date()
+    });
+
+    signupMessage.textContent = "✅ Account created successfully!";
+    signupMessage.style.color = "#28a745";
+
+    setTimeout(() => {
+      window.location.href = "account.html";
+    }, 1500);
+
+  } catch (error) {
+    console.error("Signup error:", error);
+    signupMessage.textContent = "❌ Failed to create account: " + error.message;
+    signupMessage.style.color = "#dc3545";
+  } finally {
+    signupBtn.disabled = false;
+    signupBtn.textContent = originalBtnText;
+  }
+});
+

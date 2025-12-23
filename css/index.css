@@ -1,46 +1,113 @@
  body {
-      background-color: #101C2C;
-      color: #fff;
-    }
-    .main-section {
-      padding: 60px 20px;
-    }
-    .main-section img {
-      max-width: 100%;
-      height: auto;
-    }
-    .newsletter-heading {
-      color: #fff;
-    }
-    .read-more-btn {
-      background-color: #B58E5A;
-      border: none;
-      color: #fff;
-    }
-    .read-more-btn:hover {
-      background-color: #fff;
-      color: #B58E5A;
-    }
-    .form-control, .btn {
-      border-radius: 0;
-    }
- 
-  body {
-    background-image: url('images/bg-2.jpg') !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-  }
+   background-color: #101C2C;
+   color: #fff;
+ }
 
-   #KayaIN {
-    transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
-    transform: scale(1);
-  }
-  #KayaIN.expanded {
-    transform: scale(1.25);
-  }
-  /* Add or update this CSS for rounded buttons */
-.read-more-btn,
-#newsletterForm .btn {
-  border-radius: 15px !important;
-}
+ .main-section {
+   padding: 60px 20px;
+ }
+
+ .main-section img {
+   max-width: 100%;
+   height: auto;
+ }
+
+ .newsletter-heading {
+   color: #fff;
+ }
+
+ .read-more-btn {
+   background-color: #B58E5A;
+   border: none;
+   color: #fff;
+ }
+
+ .read-more-btn:hover {
+   background-color: #fff;
+   color: #B58E5A;
+ }
+
+ .form-control,
+ .btn {
+   border-radius: 0;
+ }
+
+ body {
+   background-image: url('images/bg-2.jpg') !important;
+   background-size: cover !important;
+   background-repeat: no-repeat !important;
+   background-position: center center !important;
+ }
+
+ #KayaIN {
+   transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
+   transform: scale(1);
+ }
+
+ #KayaIN.expanded {
+   transform: scale(1.25);
+ }
+
+ /* Add or update this CSS for rounded buttons */
+ .read-more-btn,
+ #newsletterForm .btn {
+   border-radius: 15px !important;
+ }
+
+ /* Reviews Section */
+ .reviews-section {
+   padding-top: 60px;
+   padding-bottom: 60px;
+   background-color: rgba(0, 0, 0, 0.3);
+   border-top: 1px solid rgba(255, 255, 255, 0.1);
+ }
+
+ .review-card {
+   background-color: #101C2C;
+   padding: 40px;
+   border-radius: 20px;
+   border: 1px solid rgba(181, 142, 90, 0.3);
+   position: relative;
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+   margin: 0 auto;
+   max-width: 800px;
+ }
+
+ .quote-icon {
+   position: absolute;
+   top: -10px;
+   left: 30px;
+   font-size: 80px;
+   color: #B58E5A;
+   opacity: 0.3;
+   font-family: serif;
+   line-height: 1;
+ }
+
+ .stars {
+   color: #ffc107;
+   font-size: 20px;
+   margin-bottom: 20px;
+ }
+
+ .review-text {
+   font-size: 1.1rem;
+   font-style: italic;
+   font-family: 'Cormorant Garamond', serif;
+   margin-bottom: 25px;
+   line-height: 1.6;
+ }
+
+ .review-author {
+   color: #B58E5A;
+   font-family: 'Raleway', sans-serif;
+   font-weight: 700;
+   font-size: 1.2rem;
+ }
+
+ .section-title {
+   font-family: 'Raleway', sans-serif;
+   font-weight: 900;
+   margin-bottom: 40px;
+   text-align: center;
+ }
