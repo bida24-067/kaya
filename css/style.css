@@ -62,7 +62,21 @@ button:hover {
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
   color: #fff;
   width: 100%;
+}
+
+.footer-contact a {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+
+.footer-contact a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.footer-contact i {
+  font-size: 1.1rem;
 }
